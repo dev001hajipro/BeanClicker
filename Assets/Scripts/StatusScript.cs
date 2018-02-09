@@ -25,7 +25,7 @@ public class StatusScript : MonoBehaviour
 	public void addPoint (int n = 10)
 	{
 		Score += n;
-		scoreText.text = "Score: " + (Score.ToString ("00000"));
+		scoreText.text = "Score:" + (Score.ToString ("0000"));
 
 		killCount++;
 		var o = GameObject.Find ("SpawnOwner");
