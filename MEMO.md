@@ -13,3 +13,17 @@ Build SettingsでAndroidにswitch platformすると、Androidにデプロイし�
 
 ## シーンが変わってもBGMを鳴らし続ける。
 https://answers.unity.com/questions/11314/audio-or-music-to-continue-playing-between-scene-c.html
+
+
+TODO
+x 8bit SE.
+x ランダムな場所に出現。
+x タイトル画面と遷移
+x 画像差し替え
+x ゲームオーバー
+- ハイスコア
+x github
+- 音のOn/OFF
+- 衝突時にスライドする問題
+- Androidアイコンとタイトルの作成
+

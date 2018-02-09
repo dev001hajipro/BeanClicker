@@ -88,6 +88,7 @@ public class EnemyBehaviour : MonoBehaviour
 		if (o != null) {
 			o.GetComponent<StatusScript> ().addPoint ();
 		}
-		Destroy (gameObject, 0.2f);
+		GetComponent<SpriteRenderer> ().enabled = false;
+		Destroy (gameObject, 0.1f);
 	}
 }
