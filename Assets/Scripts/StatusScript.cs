@@ -8,6 +8,7 @@ public class StatusScript : MonoBehaviour
 
 	public int Score = 0;
 	public Text scoreText;
+	public int killCount = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -25,5 +26,13 @@ public class StatusScript : MonoBehaviour
 	{
 		Score += n;
 		scoreText.text = "Score: " + (Score.ToString ("00000"));
+
+		killCount++;
+		var o = GameObject.Find ("SpawnOwner");
+		if (o != null && killCount % 10 == 0) {
+			Debug.Log ("spawnFaster");
+			o.GetComponent<SpawnScript> ().spawnFaster ();
+		}
+
 	}
 }

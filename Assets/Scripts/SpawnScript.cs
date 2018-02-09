@@ -29,8 +29,11 @@ public class SpawnScript : MonoBehaviour
 			GameObject o = Instantiate (target);
 			o.transform.position = new Vector3 (w, h, 0).normalized;
 			yield return new WaitForSeconds (seconds);
-
-			seconds -= sub;
 		}
+	}
+
+	public void spawnFaster ()
+	{
+		seconds -= sub;
 	}
 }

@@ -8,6 +8,7 @@ public class EnemyBehaviour : MonoBehaviour
 	private Rigidbody2D mRigidBody2D;
 	public int power = 1;
 	private AudioSource tappedSE;
+	private AudioSource explosionSE;
 
 	// Use this for initialization
 	void Start ()
@@ -18,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
 		Debug.Log ("do start.");
 		// Unityエディターの最初のAUdioSourceをタップ音として使う。
 		tappedSE = GetComponents<AudioSource> () [0];
+		explosionSE = GetComponents<AudioSource> () [2];
 	}
 
 	static Vector2 GetRandomVec2 ()
@@ -70,7 +72,12 @@ public class EnemyBehaviour : MonoBehaviour
 	{
 		if (other.name.Equals ("Bottom")) {
 			Debug.Log (gameObject);
-			Destroy (gameObject);
+
+			var healthObject = GameObject.Find ("Health");
+			healthObject.GetComponent<HealthScript> ().takeDamage ();
+
+			explosionSE.Play ();
+			Destroy (gameObject, 0.2f);
 		}
 	}
 
