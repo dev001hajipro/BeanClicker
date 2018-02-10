@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameoverSceneScript : MonoBehaviour
 {
-
-	// Use this for initialization
 	void Start ()
 	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		
+		GameObject.Find ("HiScore").GetComponent<Text> ().text
+		= string.Format ("ハイスコア:{0}", Store.HiScore.ToString ("0000"));
 	}
 
 	void PlaySE ()

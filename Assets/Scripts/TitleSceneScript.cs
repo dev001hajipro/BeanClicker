@@ -5,19 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class TitleSceneScript : MonoBehaviour
 {
-
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		
-	}
-
 	public void Transit ()
 	{
 		SceneManager.LoadScene ("Main");

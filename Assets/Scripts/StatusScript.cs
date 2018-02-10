@@ -10,29 +10,19 @@ public class StatusScript : MonoBehaviour
 	public Text scoreText;
 	public int killCount = 0;
 
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		
-	}
-
 	public void addPoint (int n = 10)
 	{
 		Score += n;
 		scoreText.text = "Score:" + (Score.ToString ("0000"));
 
+		if (Score > Store.HiScore) {
+			Store.HiScore = Score;
+		}
+
 		killCount++;
 		var o = GameObject.Find ("SpawnOwner");
 		if (o != null && killCount % 10 == 0) {
-			Debug.Log ("spawnFaster");
 			o.GetComponent<SpawnScript> ().spawnFaster ();
 		}
-
 	}
 }

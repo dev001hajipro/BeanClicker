@@ -16,7 +16,6 @@ public class EnemyBehaviour : MonoBehaviour
 		mRigidBody2D = GetComponent<Rigidbody2D> ();
 		var direction = GetRandomVec2 ();
 		mRigidBody2D.AddForce (direction * power, ForceMode2D.Impulse);
-		Debug.Log ("do start.");
 		// Unityエディターの最初のAUdioSourceをタップ音として使う。
 		tappedSE = GetComponents<AudioSource> () [0];
 		explosionSE = GetComponents<AudioSource> () [2];
@@ -71,8 +70,6 @@ public class EnemyBehaviour : MonoBehaviour
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if (other.name.Equals ("Bottom")) {
-			Debug.Log (gameObject);
-
 			var healthObject = GameObject.Find ("Health");
 			healthObject.GetComponent<HealthScript> ().takeDamage ();
 
@@ -83,7 +80,6 @@ public class EnemyBehaviour : MonoBehaviour
 
 	void Kill ()
 	{
-		Debug.Log ("Kill");
 		var o = GameObject.Find ("Status");
 		if (o != null) {
 			o.GetComponent<StatusScript> ().addPoint ();
