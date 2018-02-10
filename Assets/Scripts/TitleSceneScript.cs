@@ -10,4 +10,9 @@ public class TitleSceneScript : MonoBehaviour
 		SceneManager.LoadScene ("Main");
 		GetComponent<AudioSource> ().Play ();
 	}
+
+	public void SetMusic ()
+	{
+		Store.Music *= -1;
+	}
 }
