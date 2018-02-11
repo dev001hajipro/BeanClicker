@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class BGMScript : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class BGMScript : MonoBehaviour
 		get;
 		private set;
 	}
+
+	public AudioMixer audioMixer;
+	public AudioMixerSnapshot BGMOnSnapshot;
+	public AudioMixerSnapshot BGMOffSnapshot;
 
 	void Awake ()
 	{
@@ -28,6 +33,14 @@ public class BGMScript : MonoBehaviour
 
 	public void OnValueChanged (bool on)
 	{
+		Debug.Log ("OnValueChanged: " + on);
 		Store.Music = on ? 1 : 0;
+		if (on) {
+			// off -> on
+			BGMOnSnapshot.TransitionTo (1.0f);
+		} else {
+			// on -> off
+			BGMOffSnapshot.TransitionTo (1.0f);
+		}
 	}
 }
