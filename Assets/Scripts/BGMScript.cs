@@ -18,6 +18,14 @@ public class BGMScript : MonoBehaviour
 	void Awake ()
 	{
 		if (Instance != null && Instance != this) {
+			// DontDestroyOnLoadのため、
+			// ゲームオーバー画面からタイトル画面に戻った場合、
+			// 新規に生成されたTitleシーンのToggleのOnValueChangedで、
+			// BGMオブジェクトがMissingになってしまう。
+			// よってシングルトンのメソッドを割り当てる。
+			var o = GameObject.Find ("Toggle").GetComponent<Toggle> ();
+			o.onValueChanged.AddListener (Instance.OnValueChanged);
+
 			DestroyObject (this.gameObject);
 		} else { // Instance is NULL.
 			Instance = this;
@@ -33,6 +41,8 @@ public class BGMScript : MonoBehaviour
 
 	public void OnValueChanged (bool on)
 	{
+
+
 		Debug.Log ("OnValueChanged: " + on);
 		Store.Music = on ? 1 : 0;
 		if (on) {
