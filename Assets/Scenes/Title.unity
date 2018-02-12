@@ -323,7 +323,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30D7\u30EC\u30A4"
+  m_Text: PLAY
 --- !u!222 &444309118
 CanvasRenderer:
   m_ObjectHideFlags: 0

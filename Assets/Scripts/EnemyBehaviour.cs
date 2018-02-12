@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
 	public int power = 1;
 	private AudioSource tappedSE;
 	private AudioSource explosionSE;
+	public GameObject TapEffect;
 
 	// Use this for initialization
 	void Start ()
@@ -85,6 +87,11 @@ public class EnemyBehaviour : MonoBehaviour
 			o.GetComponent<StatusScript> ().addPoint ();
 		}
 		GetComponent<SpriteRenderer> ().enabled = false;
+		gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+		// ParticleはUnityEditorのPlayOnAwakeにより実行される。
+		var p = Instantiate (TapEffect, transform.position, Quaternion.identity);
+		Destroy (p, p.GetComponent<ParticleSystem> ().main.duration + 0.2f); // 0.2f buffer.
+
 		Destroy (gameObject, 0.1f);
 	}
 }
